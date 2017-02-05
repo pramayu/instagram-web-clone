@@ -1,0 +1,52 @@
+<div class="col-md-6 left-side">
+  <div class="slider_img">
+    <ul class="this_list">
+      <li><img src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot1.jpg/aafd8c6b005d.jpg" alt="" /></li>
+      <li><img src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot2.jpg/2d9d7248af43.jpg" alt="" /></li>
+      <li><img src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot3.jpg/629d23a3c7b2.jpg" alt="" /></li>
+      <li><img src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot4.jpg/001bc33056c1.jpg" alt="" /></li>
+      <li><img src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot5.jpg/f5ae123ab1e2.jpg" alt="" /></li>
+    </ul>
+  </div>
+</div>
+<div class="col-md-5 right-side">
+  <div id="form-signup">
+    <div class="login-frm">
+      <div class="title-inst">
+        <h2>Nodegram</h2>
+        <p class="catip">Sign up to see photos and videos from your friends</p>
+      </div>
+      <div class="omni-auth o-auth">
+       <div class="bti btw">
+        <a href="#" class="btn-omni btn btn-block">Log in with Facebook</a>
+      </div>
+        <p class="or">OR</p>
+      </div>
+      <form class="lgn-form" action="/users/signup" method="post">
+        <div class="form-group _this_mrg">
+          <input type="email" name="email" placeholder="Email" class="form-control">
+        </div>
+        <div class="form-group _this_mrg">
+          <input type="text" name="fullname" placeholder="Full Name" class="form-control">
+        </div>
+        <div class="form-group _this_mrg">
+          <input type="text" name="username" placeholder="Username" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" placeholder="Password" class="form-control">
+        </div>
+        <div class="btn-login">
+          <button type="submit" class="btn tb btn-block">Sign up</button>
+          <input type="hidden" value="{{ csrfToken }}" name="_csrf">
+        </div>
+      </form>
+      <div class="term">
+        <p class="fo">By signing up, you agree to our <strong>Terms &amp; Privacy Policy</strong></p>
+      </div>
+    </div>
+    <div class="sign_up_switch">
+      <p class="donthave">Have an account? <span><a id="login-btn">Log in</a></span></p>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

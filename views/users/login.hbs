@@ -1,0 +1,42 @@
+<div class="col-md-6 left-side">
+  <div class="slider_img">
+    <ul class="this_list">
+      <li><img src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot1.jpg/aafd8c6b005d.jpg" alt="" /></li>
+      <li><img src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot2.jpg/2d9d7248af43.jpg" alt="" /></li>
+      <li><img src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot3.jpg/629d23a3c7b2.jpg" alt="" /></li>
+      <li><img src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot4.jpg/001bc33056c1.jpg" alt="" /></li>
+      <li><img src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot5.jpg/f5ae123ab1e2.jpg" alt="" /></li>
+    </ul>
+  </div>
+</div>
+<div class="col-md-5 right-side">
+  <div id="form-login">
+    <div class="login-frm">
+      <div class="title-inst">
+        <h2>Nodegram</h2>
+      </div>
+      <form class="lgn-form" action="/users/login" method="post">
+        <div class="form-group _this_mrg">
+          <input type="text" name="username" placeholder="Username" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" placeholder="Password" class="form-control">
+        </div>
+        <div class="btn-login">
+          <button type="submit" class="btn tb btn-block">Log in</button>
+          <input type="hidden" value="{{ csrfToken }}" name="_csrf">
+        </div>
+      </form>
+      <div class="omni-auth">
+        <p class="or">OR</p>
+        <div class="bti">
+          <a href="#" class="btn-omni btn-block btn">Log in with Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="sign_up_switch">
+      <p class="donthave">Don't have an account? <span><a id="sign-btn">Sign up</a></span></p>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

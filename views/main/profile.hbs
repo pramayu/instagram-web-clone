@@ -1,0 +1,63 @@
+<div class="col-md-4 profile_left">
+  <div class="img_pp">
+    {{#if user.avatar}}
+      <img src="/uploads/profile/{{user.avatar}}" alt="" />
+    {{else}}
+      <img src="/images/default/profile.png" width="152" alt="" />
+    {{/if}}
+  </div>
+</div>
+<div class="col-md-8 profile_right">
+  <div class="info_pp">
+    <div class="inlu">
+      <h2 class="name_">{{user.username}}</h2>
+      {{#ifequal current_user.id user.id }}
+      <a href="/accounts/edit" class="btn-follow prof">Profile</a>
+      <a href="#" class="btn-arrow uplo" data-toggle="modal" data-target="#upload"><span class="glyphicon glyphicon-picture"></span></a>
+      {{else}}
+        {{#checkFollow user.followers current_user.id}}
+          {{#ifequal value.follower.id ../current_user.id}}
+            <a href="#" class="btn-follow">Following</a>
+            <a href="#" class="btn-arrow"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
+          {{else}}
+            <a onClick="followAct('{{user.id}}')" class="btn-follow prof">Follow</a>
+            <a href="#" class="btn-arrow prof"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
+          {{/ifequal}}
+        {{/checkFollow}}
+      {{/ifequal}}
+      <a href="#" class="options dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">bg</a>
+      <ul class="dropdown-menu">
+        <li><a href="/users/logout">Logout</a></li>
+      </ul>
+    </div>
+    <ul class="list-inline end-this-day">
+      <li><a><strong>122</strong> posts</a></li>
+      <li><a href="#"><strong>1,151</strong> Followers</a></li>
+      <li><a href="#"><strong>721</strong> Following</a></li>
+    </ul>
+    <div class="dsf">
+      <p class="desc">
+        <b><span class="fulname">{{user.fullname}}</span></b>
+        {{user.bio}} <a href="#" class="websit">#{{user.website}}</a>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>
+<div class="isi-photo">
+  {{#each user.posts}}
+  <div class="col-md-4 grd">
+    <div class="img-gal">
+      <img src="/uploads/thumb_293x293/{{thumb_img}}" alt="{{location}}" />
+    </div>
+    <a href="#" class="_gdgr" data-toggle="modal" data-target="#photo-box-{{id}}">
+      <ul class="list-inline">
+        <li><span class="fa fa-heart"></span><span class="counter">240</span></li>
+        <li><span class="fa fa-comment"></span><span class="counter">30</span></li>
+      </ul>
+    </a>
+  </div>
+  {{/each}}
+</div>
+{{> modalupload}}
+{{> modalphoto}}

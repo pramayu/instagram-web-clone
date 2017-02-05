@@ -1,0 +1,26 @@
+<div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Upload Photo</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/posts/upload" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <input type="file" name="pics" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="location" class="form-control" placeholder="Places">
+          </div>
+          <div class="form-group">
+            <textarea name="caption" rows="3" cols="40" placeholder="Description" class="form-control"></textarea>
+          </div>
+          <div class="bdhf pull-right">
+            <button type="submit" class="btn bh">UPLOAD</button>
+          </div>
+          <div class="clear"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

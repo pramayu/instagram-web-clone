@@ -1,0 +1,58 @@
+{{#each user.posts}}
+<div class="modal fade tersf" id="photo-box-{{id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="img-left img-warghf">
+          <img src="/uploads/original/{{original_img}}" alt="" class="data-img img-responsive" />
+        </div>
+        <div class="comment-right">
+          <div class="pps">
+            <ul class="list-inline">
+              <li><img src="/uploads/profile/{{../user.avatar}}" alt="" /></li>
+              <li>
+                <p class="bgff">
+                  {{../user.username}}
+                </p>
+              </li>
+              <li class="pull-right vxc"><a href="#" bcgd>Follow</a></li>
+            </ul>
+          </div>
+          <div class="ppo">
+            <ul class="list-inline">
+              <li>134 likes</li>
+              <li class="pull-right fgh"><span>{{{timeAgo createdAt}}}</span></li>
+            </ul>
+          </div>
+          <div class="comments">
+            <ul class="nbgr list-unstyled">
+              <li>
+                <a href="#" class="user">{{../user.username}}</a>
+                <span class="isi">{{caption}}</span>
+              </li>
+              {{#each comments}}
+              <li>
+                <a href="#" class="user">{{user.username}}</a>
+                <span class="isi">{{body}}</span>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="form-comments">
+            <div class="col-md-2 dshgjhg">
+              <a href="#" class="like"><span class="fa fa-heart"></span></a>
+            </div>
+            <div class="col-md-10 sgjhg">
+              <form action="#" method="post">
+                <input type="text" class="form-control ada" name="comment" placeholder="Add Comment...">
+              </form>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}

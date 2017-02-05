@@ -1,0 +1,82 @@
+<div class="edit-data">
+<div class="col-md-3 left_">
+  <ul class="list_itm">
+    <li><a href="#" class="acti">Edit Profile</a></li>
+    <li><a href="#">Change Password</a></li>
+    <li><a href="#">Authorized Applications</a></li>
+    <li><a href="#">Comments</a></li>
+    <li><a href="#">Email and SMS</a></li>
+  </ul>
+</div>
+<div class="col-md-9 right_">
+  <div class="col-md-3 left_s">
+    <ul class="left_info list-unstyled">
+      {{# if user.profile}}
+      <li><img class="foo" src="/uploads/profile/{{user.profile}}" alt="" /></li>
+      {{else}}
+      <li><img class="foo" src="/images/default/profile.png" alt="" /></li>
+      {{/if}}
+      <li>
+        <p class="g name">Name</p>
+      </li>
+      <li>
+        <p class="g username">Username</p>
+      </li>
+      <li>
+        <p class="g website">Website</p>
+      </li>
+      <li>
+        <p class="g name">Bio</p>
+      </li>
+      <li>
+        <p class="g fg">Email</p>
+      </li>
+      <li>
+        <p class="g">Phone Number</p>
+      </li>
+      <li>
+        <p class="g">Gender</p>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9 right_s">
+    <ul class="right-form list-unstyled">
+      <form action="/accounts/edit" method="post" enctype="multipart/form-data">
+        <li class="nm"><h4>@{{user.username}}</h4></li>
+        <li class="form-group fl">
+          <input type="text" name="fullname" value="{{user.fullname}}" class="form-control">
+        </li>
+        <li class="form-group usr">
+          <input type="text" name="username" value="{{user.username}}" class="form-control">
+        </li>
+        <li class="form-group web">
+          <input type="text" name="website" value="{{user.website}}" class="form-control">
+        </li>
+        <li class="form-group bio">
+          <textarea name="bio" rows="3" cols="40" class="form-control">{{user.bio}}</textarea>
+        </li>
+        <li class="form-group mail">
+          <input type="text" name="email" value="{{user.email}}" class="form-control">
+        </li>
+        <li class="form-group phone">
+          <input type="text" name="phone" value="{{user.phone}}" class="form-control">
+        </li>
+        <li class="form-group gender">
+          <select class="this-gender form-control" name="gender" value="{{user.gender}}">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </li>
+        <li class="form-group phone">
+          <input type="file" name="avatar" class="form-control fohg">
+        </li>
+        <li class="bgth">
+          <button type="submit" class="btn btn-f">SUBMIT</button>
+        </li>
+      </form>
+    </ul>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>

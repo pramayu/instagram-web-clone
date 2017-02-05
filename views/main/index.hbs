@@ -1,0 +1,60 @@
+<div class="index-post">
+  <div class="jsdfhiwuh">
+    <span id="current-us" data-current="{{current_user.id}}"></span>
+    {{#each posts}}
+      <div class="isi-data">
+        <div class="title">
+          <ul class="list-inline kj">
+            <li class="photo">
+              <img src="/uploads/profile/{{user.avatar}}" alt="">
+            </li>
+            <li class="name">
+                {{#if location}}
+                  <p class="usr"><a href="/{{user.username}}"><b>{{user.username}}</b></a></p>
+                  <span>{{location}}</span>
+                {{else}}
+                  <p class="sudr"><b>{{user.username}}</b></p>
+                {{/if}}
+            </li>
+            <li class="cvf">
+              <p>{{{timeAgo createdAt}}}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="img-df">
+          <img src="uploads/original/{{original_img}}" alt="">
+        </div>
+        <div class="capcom">
+          <div id="vote_length_{{id}}"></div>
+          <ul class="list-unstyled khg">
+            <li class="caption">
+              <a href="#" class="name">{{user.username}}</a> <span>{{caption}}</span>
+              <p class="count-com"><a href="#" class="comen" id="length_kom_{{id}}">view all {{comments.length}} comments</a></p>
+            </li>
+            <div id="comment-data-{{id}}"></div>
+          </ul>
+        </div>
+        <div class="frm-com">
+          <div class="kjwq">
+            <form id="create-comment-{{id}}" action="/posts/comment" method="post">
+                {{#checkVote votes ../current_user.id}}
+                  {{#ifequal value.userId ../../current_user.id}}
+                    <div id="prevdlike_{{../id}}">
+                      <a class="like_btn red_btn" id="dislike_{{../id}}">like</a>
+                    </div>
+                  {{else}}
+                    <div id="prevolike_{{../id}}">
+                      <a class="like_btn" id="like_{{../id}}">like</a>
+                    </div>
+                  {{/ifequal}}
+                {{/checkVote}}
+                <input type="hidden" name="postid" id="post_id_{{id}}" value="{{id}}">
+                <input type="text" name="comment" id="body_id_{{id}}" placeholder="Add Comment..." class="njhg">
+                <button type="submit" style="display: none">submit</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
