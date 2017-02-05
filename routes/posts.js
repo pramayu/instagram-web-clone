@@ -51,9 +51,17 @@ router.post('/comment', function(req, res, next){
     body: req.body.comment,
     userId: req.user.id,
     postId: req.body.postid
-  }).then(function(user, err){
+  }).then(function(comment, err){
     res.send('successfully');
-  })
+    if(req.body.usrid !== req.user.id){
+      model.notifications.create({
+        notice_type: 'comment',
+        userId: req.body.usrid,
+        postId: req.body.postid,
+        notified_by_id: req.user.id
+      });
+    }
+  });
 });
 
 
@@ -80,25 +88,25 @@ router.get('/the-comments', function(req,res, next){
   })
 });
 
-
-router.get('/search', function(req, res, next){
-  model.users.findAll({
-    where: {
-      username: {
-        $like: '%trisniasanti%'
-      }
-    }
-  }).then(function(err, users){
-    if(err){
-      res.sendStatus(500);
-    }
-    var data = [];
-    for(var i = 0; i < rows.length; i++){
-      data.push(users[i].username);
-    }
-    res.end(JSON.stringify(data));
-  });
-});
+// stil not working
+// router.get('/search', function(req, res, next){
+//   model.users.findAll({
+//     where: {
+//       username: {
+//         $like: '%trisniasanti%'
+//       }
+//     }
+//   }).then(function(err, users){
+//     if(err){
+//       res.sendStatus(500);
+//     }
+//     var data = [];
+//     for(var i = 0; i < rows.length; i++){
+//       data.push(users[i].username);
+//     }
+//     res.end(JSON.stringify(data));
+//   });
+// });
 
 
 router.get('/delete/vote/:id', function(req, res, next){
