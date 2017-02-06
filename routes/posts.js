@@ -72,7 +72,13 @@ router.post('/:id/votes', function(req, res, next){
     postId: post_id
   }).then(function(err, vote){
     res.sendStatus(200);
-    console.log(err);
+    console.log(req.body.tuser);
+    model.notifications.create({
+      notice_type: 'lik',
+      userId: req.body.tuser,
+      postId: post_id,
+      notified_by_id: req.user.id
+    })
   });
 });
 

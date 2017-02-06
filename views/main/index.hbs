@@ -36,6 +36,9 @@
         </div>
         <div class="frm-com">
           <div class="kjwq">
+            <form action="/posts/{{id}}/votes" method="post">
+              <input type="hidden" name="tuser" id="tuser_{{id}}" value="{{user.id}}">
+            </form>
             <form id="create-comment-{{id}}" action="/posts/comment" method="post">
                 {{#checkVote votes ../current_user.id}}
                   {{#ifequal value.userId ../../current_user.id}}
@@ -43,7 +46,7 @@
                       <a class="like_btn red_btn" id="dislike_{{../id}}">like</a>
                     </div>
                   {{else}}
-                    <div id="prevolike_{{../id}}">
+                    <div id="prevolike_{{../id}}" data-tuser="{{../user.id}}">
                       <a class="like_btn" id="like_{{../id}}">like</a>
                     </div>
                   {{/ifequal}}
