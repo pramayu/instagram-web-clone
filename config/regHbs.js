@@ -1,18 +1,13 @@
 var handleHbs = require('express-handlebars');
 var _ = require('lodash');
 var strftime = require('strftime');
+var model = require('../models');
 
 
 var handleBar = handleHbs.create({
   defaultLayout: 'layout',
   extname: '.hbs',
   helpers: {
-    // loopData: function(map, block){
-    //   var _loop = Object.keys(map).map(function(post){
-    //     return map[post];
-    //   });
-    //   return block.fn({value: JSON.stringify(_loop) });
-    // },
     timeAgo: function(tme){
       var msperMinute = 60 * 1000;
       var msperHour = msperMinute * 60;

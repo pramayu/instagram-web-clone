@@ -88,27 +88,6 @@ router.get('/the-comments', function(req,res, next){
   })
 });
 
-// stil not working
-// router.get('/search', function(req, res, next){
-//   model.users.findAll({
-//     where: {
-//       username: {
-//         $like: '%trisniasanti%'
-//       }
-//     }
-//   }).then(function(err, users){
-//     if(err){
-//       res.sendStatus(500);
-//     }
-//     var data = [];
-//     for(var i = 0; i < rows.length; i++){
-//       data.push(users[i].username);
-//     }
-//     res.end(JSON.stringify(data));
-//   });
-// });
-
-
 router.get('/delete/vote/:id', function(req, res, next){
   var id = req.params.id;
   model.votes.destroy({
@@ -120,4 +99,33 @@ router.get('/delete/vote/:id', function(req, res, next){
   });
 });
 
+router.get('/notifications', function(req, res, next){
+  model.notifications.findAll({
+    include: [
+      {model: model.posts, attributes: ['id', 'caption']},
+      {model: model.users, as: 'notified_by', attributes: ['id', 'username', 'avatar']}
+    ],
+    order: '"createdAt" DESC',
+    limit: 6
+  }).then(function(notifs){
+    res.send({notifs: notifs});
+  })
+});
+
+router.put('/notif/:id', function(req, res, next){
+  model.notifications.update({
+    read: true,
+  },{ where: { id: req.params.id }
+  }).then(function(err, user){
+    res.sendStatus(200);
+  });
+});
+
 module.exports = router;
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/users/login');
+};

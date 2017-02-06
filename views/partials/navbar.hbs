@@ -11,7 +11,9 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="btn-1_"><a href="#" class="btn-1">btn-1</a></li>
-      <li class="btn-2_"><a href="#" class="btn-2">btn-2</a></li>
+      <li class="btn-2_"><a href="#" class="btn-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">btn-2</a>
+        <ul class="list-unstyled dropdown-menu drp-mnu" id="notifs" data-crt="{{current_user.id}}"></ul>
+      </li>
       <li class="btn-3_"><a href="/{{current_user.username}}" class="btn-3">btn-3</a></li>
     </ul>
   </div>
