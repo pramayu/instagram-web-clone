@@ -96,7 +96,7 @@ router.get('/accounts/edit', isLoggedIn, function(req, res, next) {
       res.redirect('/users/login');
     }
     res.render('./main/edit', {
-      user: user
+      user: user, title: "Edit accounts ~ Instagram"
     });
   })
 });
