@@ -11,10 +11,12 @@ router.post('/follow/:id', function(req, res, next){
     userId: followed,
     followerId: follower
   }).then(function(err, user){
-    if(err){
-      res.sendStatus(500);
-    }
     res.sendStatus(200);
+    model.notifications.create({
+      notice_type: 'follow',
+      userId: req.params.id,
+      notified_by_id: req.user.id
+    })
   });
 });
 

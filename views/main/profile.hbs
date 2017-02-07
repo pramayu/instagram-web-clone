@@ -18,10 +18,10 @@
         {{#checkFollow user.followers current_user.id}}
           {{#ifequal value.follower.id ../current_user.id}}
             <a href="#" class="btn-follow">Following</a>
-            <a href="#" class="btn-arrow"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
           {{else}}
-            <a onClick="followAct('{{user.id}}')" class="btn-follow prof">Follow</a>
-            <a href="#" class="btn-arrow prof"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
+            <div id="following">
+              <a data-foobar={{../user.id}} id="foobar" class="btn-follow prof">Follow</a>
+            </div>
           {{/ifequal}}
         {{/checkFollow}}
       {{/ifequal}}
@@ -31,9 +31,9 @@
       </ul>
     </div>
     <ul class="list-inline end-this-day">
-      <li><a><strong>122</strong> posts</a></li>
-      <li><a href="#"><strong>1,151</strong> Followers</a></li>
-      <li><a href="#"><strong>721</strong> Following</a></li>
+      <li><a><strong>{{user.posts.length}}</strong> posts</a></li>
+      <li><a href="#"><strong>{{user.followers.length}}</strong> Followers</a></li>
+      <li><a href="#"><strong>{{user.following.length}}</strong> Following</a></li>
     </ul>
     <div class="dsf">
       <p class="desc">

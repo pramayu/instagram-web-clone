@@ -61,8 +61,10 @@ router.get('/:username', isLoggedIn, function(req, res, next) {
         }]
       },
       {
-        model: model.relationships,
-        as: 'followers',
+        model: model.relationships, as: 'following'
+      },
+      {
+        model: model.relationships, as: 'followers',
         include: [{
           model: model.users,
           as: 'follower'

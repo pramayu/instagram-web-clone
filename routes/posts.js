@@ -74,7 +74,7 @@ router.post('/:id/votes', function(req, res, next){
     res.sendStatus(200);
     console.log(req.body.tuser);
     model.notifications.create({
-      notice_type: 'lik',
+      notice_type: 'like',
       userId: req.body.tuser,
       postId: post_id,
       notified_by_id: req.user.id
