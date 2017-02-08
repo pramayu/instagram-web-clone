@@ -105,6 +105,8 @@ router.get('/delete/vote/:id', function(req, res, next){
   });
 });
 
+
+
 router.get('/notifications', function(req, res, next){
   model.notifications.findAll({
     include: [
@@ -126,6 +128,36 @@ router.put('/notif/:id', function(req, res, next){
     res.sendStatus(200);
   });
 });
+
+router.get('/we-comen', isLoggedIn, function(req, res, next){
+  model.posts.findAll({
+    include: [
+      {model: model.comments, include: [{model: model.users, attributes: ['id', 'username']}]}
+    ],
+    attributes: ['id', 'caption']
+  }).then(function(posts){
+    res.send({posts: posts});
+  });
+});
+
+router.get('/:id', isLoggedIn, function(req, res, next){
+  var id = req.params.id;
+  model.posts.findOne({
+    include: [
+      {model: model.users, attributes: ['id', 'username', 'avatar']},
+      {model: model.comments, include: [{model: model.users, attributes: ['id', 'username']}]},
+      {model: model.votes}
+    ],
+    where: {
+      id: id
+    }
+  }).then(function(post, err){
+    console.log(post);
+    res.render('./posts/show', {post: post, title: post.caption + '~ Instagram'});
+  })
+});
+
+
 
 module.exports = router;
 

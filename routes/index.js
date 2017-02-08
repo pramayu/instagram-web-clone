@@ -58,6 +58,8 @@ router.get('/:username', isLoggedIn, function(req, res, next) {
           include: [{
             model: model.users
           }]
+        }, {
+          model: model.votes
         }]
       },
       {

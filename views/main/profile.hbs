@@ -50,10 +50,10 @@
     <div class="img-gal">
       <img src="/uploads/thumb_293x293/{{thumb_img}}" alt="{{location}}" />
     </div>
-    <a href="#" class="_gdgr" data-toggle="modal" data-target="#photo-box-{{id}}">
+    <a href="/posts/{{id}}" class="_gdgr" data-toggle="modal" data-target="#photo-box-{{id}}">
       <ul class="list-inline">
-        <li><span class="fa fa-heart"></span><span class="counter">240</span></li>
-        <li><span class="fa fa-comment"></span><span class="counter">30</span></li>
+        <li><span class="fa fa-heart"></span><span class="counter">{{this.votes.length}}</span></li>
+        <li><span class="fa fa-comment"></span><span class="counter">{{this.comments.length}}</span></li>
       </ul>
     </a>
   </div>

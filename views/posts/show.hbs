@@ -1,0 +1,40 @@
+<div class="show-data">
+  <div class="col-md-8 ldf">
+    <div class="dt-pic">
+      <img src="/uploads/original/{{post.original_img}}" alt="">
+    </div>
+  </div>
+  <div class="col-md-4 rdf">
+    <div class="col-md-6 rrdl">
+      <img src="/uploads/profile/{{post.user.avatar}}" alt="">
+      <div class="lalala">
+        {{#if post.location}}
+          <p class="username">@{{post.user.username}}</p>
+          <span>{{post.location}}</span>
+        {{else}}
+          <p class="username">@{{post.user.username}}</p>
+        {{/if}}
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="col-md-6 rrdf">
+      <a href="#" class="following">Following</a>
+    </div>
+    <div class="clear"></div>
+    <div class="lkei">
+      <ul class="list-inline">
+        <li class="bok"><div id="vote_length_{{post.id}}"></div></li>
+        <li class="yhdr pull-right">{{{timeAgo post.createdAt}}}</li>
+      </ul>
+    </div>
+    <div class="comen">
+      <ul class="list-unstyled khgo">
+        <li class="caption">
+          <a href="#" class="name">{{post.user.username}}</a> <span>{{post.caption}}</span>
+        </li>
+        <div id="comen-data-{{post.id}}"></div>
+      </ul>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
