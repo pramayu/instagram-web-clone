@@ -15,16 +15,26 @@
                   {{../user.username}}
                 </p>
               </li>
-              <li class="pull-right vxc"><a href="#" bcgd>Follow</a></li>
+              {{#ifequal ../user.id ../current_user.id}}
+                <li class="pull-right vxc"><a href="/accounts/edit">Profile</a></li>
+              {{else}}
+                {{#checkFollow ../../user.followers ../../current_user.id}}
+                  {{#ifequal value.follower.id ../../../current_user.id}}
+                    <li class="pull-right vxc"><a>Following</a></li>
+                  {{else}}
+                    <li class="pull-right vxc"><a data-foobar={{../../../user.id}} id="foobar">Follow</a></li>
+                  {{/ifequal}}
+                {{/checkFollow}}
+              {{/ifequal}}
             </ul>
           </div>
           <div class="ppo">
             <ul class="list-inline">
-              <li>134 likes</li>
+              <li id="vote_length_{{id}}"></li>
               <li class="pull-right fgh"><span>{{{timeAgo createdAt}}}</span></li>
             </ul>
           </div>
-          <div class="comments">
+          <div class="comments reve">
             <ul class="nbgr list-unstyled">
               <li>
                 <a href="#" class="user">{{../user.username}}</a>
@@ -39,12 +49,30 @@
             </ul>
           </div>
           <div class="form-comments">
+            <form action="/posts/{{id}}/votes" method="post">
+              <input type="hidden" name="tuser" id="tuser_{{../id}}" value="{{user.id}}">
+            </form>
             <div class="col-md-2 dshgjhg">
-              <a href="#" class="like"><span class="fa fa-heart"></span></a>
+              {{#checkVote votes current_user.id}}
+                {{#ifequal value.userId ../current_user.id}}
+                  <div id="prevdlike_{{../id}}">
+                    <!-- <a class="like_btn red_btn" id="dislike_{{../id}}">like</a> -->
+                    <a href="#" class="like" id="dislike_{{../id}}"><span class="fa fa-heart red_btn_2"></span></a>
+                  </div>
+                {{else}}
+                  <div id="prevolike_{{../id}}" data-tuser="{{../user.id}}">
+                    <!-- <a class="like_btn" id="like_{{../id}}">like</a> -->
+                    <a href="#" class="like" id="like_{{../id}}"><span class="fa fa-heart"></span></a>
+                  </div>
+                {{/ifequal}}
+              {{/checkVote}}
             </div>
             <div class="col-md-10 sgjhg">
-              <form action="#" method="post">
-                <input type="text" class="form-control ada" name="comment" placeholder="Add Comment...">
+              <form id="create-comment-{{id}}" action="/posts/comment" method="post">
+                <input type="hidden" name="postid" id="post_id_{{id}}" value="{{id}}">
+                <input type="text" name="comment" class="form-control ada" id="body_id_{{id}}" placeholder="Add Comment...">
+                <input type="hidden" name="usrid" id="usr_id_{{id}}" value="{{user.id}}">
+                <button type="submit" style="display: none">submit</button>
               </form>
             </div>
             <div class="clear"></div>
